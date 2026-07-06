@@ -91,7 +91,7 @@ services:
       - thingsboard-logs:/var/log/thingsboard
 
   thingsboard-gateway:
-    image: shen485/tb-gateway:3.8.0-pshsud
+    image: hotshot824/tb-gateway:3.8.0-pshsud-0.0.1
     container_name: thingsboard-gateway
     restart: always
     ports:
@@ -105,7 +105,7 @@ services:
       - TB_GW_HOST=thingsboard-ce
       - TB_GW_PORT=1883
       - TB_GW_SECURITY_TYPE=accessToken
-      - TB_GW_ACCESS_TOKEN=0DRiJdrhZtSaTCZlYplh
+      - TB_GW_ACCESS_TOKEN=hIW8O1y968cHqz4xxHqG
     volumes:
       - ./config:/thingsboard_gateway/config
       - ./logs/gateway:/thingsboard_gateway/logs
@@ -122,7 +122,7 @@ services:
       environment:
         - THINGSBOARD_HOST=rabbitmq
         - THINGSBOARD_MQTT_PORT=1883
-        - TOPIC=any/topic/you/want
+        - TOPIC=sensor/data
         - DEVICE_NAME=Auto_Test_Device
         - RABBITMQ_USER=guest
         - RABBITMQ_PASSWORD=guest

@@ -1,0 +1,41 @@
+# ThingsBoard IoT Gateway - local/runtime files
+
+# Gateway config files (contain credentials, tokens, runtime state)
+config/tb_gateway.json
+config/connected_devices.json
+config/.firstlaunch
+config/list.json
+config/statistics.json
+
+# Connector configs (may contain credentials/endpoints)
+config/*.json
+
+# Keep directory structure but ignore generated content
+!config/statistics/
+
+# Logs
+logs/
+*.log
+
+# Gateway persistent runtime data
+data/
+.sqlite
+*.db
+
+# Statistics / backups
+config/backup/
+config/statistics/*.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Extension / plugin
+extensions/
