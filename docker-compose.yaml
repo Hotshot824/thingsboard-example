@@ -123,10 +123,12 @@ services:
         - THINGSBOARD_HOST=rabbitmq
         - THINGSBOARD_MQTT_PORT=1883
         - TOPIC=sensor/data
-        - DEVICE_NAME=Auto_Test_Device
+        - DEVICE_NAME_PREFIX=Auto_Test_Device
         - RABBITMQ_USER=guest
         - RABBITMQ_PASSWORD=guest
       entrypoint: ["/entrypoint.sh"]
+      deploy:
+        replicas: 5
 
 volumes:
   postgres-data:

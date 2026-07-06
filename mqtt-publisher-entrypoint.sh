@@ -9,7 +9,7 @@ THINGSBOARD_HOST="${THINGSBOARD_HOST:-rabbitmq}"
 THINGSBOARD_MQTT_PORT="${THINGSBOARD_MQTT_PORT:-1883}"
 TOPIC="${TOPIC:-sensor/data}" 
 INTERVAL_SECONDS="${INTERVAL_SECONDS:-5}"
-DEVICE_NAME="${DEVICE_NAME:-SN-001}"
+DEVICE_NAME="${DEVICE_NAME_PREFIX:-Device}_$(hostname | cut -c 1-8)"
 
 RABBITMQ_USER="${RABBITMQ_USER:-guest}"
 RABBITMQ_PASSWORD="${RABBITMQ_PASSWORD:-guest}"
@@ -25,7 +25,7 @@ while true; do
 
     JSON_PAYLOAD="{\"serialNumber\": \"$DEVICE_NAME\", \"sensorType\": \"Thermometer\", \"sensorModel\": \"DHT11\", \"temp\": \"$TEMP\", \"hum\": $HUM}"
 
-    echo "$(date '+%Y-%m-%d %H:%M:%S') Sending: $JSON_PAYLOAD"
+    echo "$(date '+%Y-%m-%d %H:%M:%S') [$DEVICE_NAME] Sending: $JSON_PAYLOAD"
 
     mosquitto_pub -h "$THINGSBOARD_HOST" -p "$THINGSBOARD_MQTT_PORT" \
         -t "$TOPIC" \
